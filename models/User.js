@@ -1,55 +1,51 @@
-
 const { Schema, model } = require('mongoose');
 
-var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
-};
 
-const userSchema = new Schema(
+const UserSchema = new Schema(
     {
-        username : {
+        username: {
             type: String,
-            trim: true,
-            required: true,
             unique: true,
+            required: 'We need to know what to call you, please enter a user name',
+            trim: true,
 
         },
         email: {
             type: String,
-            required: true,
+            required: 'Please enter a valid email address',
             unique: true,
-            required: 'Email address is required',
-            validate: [validateEmail, 'Please fill a valid email address'],
-            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+            validate: {
+                validator(validEmail) {
+                  return /^([a-zA-Z0-9_\.-]+)@([\da-z\.-]+)\.([a-z]{2,6})(\.[a-z]{2,6})?$/.test(
+                    validEmail
+                  );
+                },
+                message: "Please enter a valid email address",
+              },
         },
-        thoughts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Thought',
-            }
-        ],
-        friends: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'User',
-            }
-        ]
+        thoughts: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }],
+        friends: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
     },
     {
         toJSON: {
-            getters: true,
-            virtuals: true
+            virtuals: true,
+            getters: true
         },
         id: false
     }
 );
 
+// friendCount Virtual
 UserSchema.virtual('friendCount').get(function () {
     return this.friends.length
 })
 
+const User = model('User', UserSchema)
 
-const User = model('user', userSchema);
-
-module.exports = User;
+module.exports = User
