@@ -5,8 +5,8 @@ const connection = require("../config/connection");
 
 const users = [
   {
-    "username": "jamie",
-    "email": "jamu@bu.edu",
+    username: "jamie",
+    email: "jamu@bu.edu",
     thought: [],
   },
 ];
@@ -21,6 +21,6 @@ connection.once("open", async () => {
   await User.collection.insertMany(users);
 
   console.table(users);
-  console.info("seeds generated");
+  console.info("seeds generated!");
   process.exit(0);
 });
