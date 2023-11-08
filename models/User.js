@@ -6,7 +6,7 @@ const UserSchema = new Schema(
         username: {
             type: String,
             unique: true,
-            required: 'We need to know what to call you, please enter a user name',
+            required: 'Please enter a username',
             trim: true,
 
         },
@@ -41,7 +41,6 @@ const UserSchema = new Schema(
     }
 );
 
-// friendCount Virtual
 UserSchema.virtual('friendCount').get(function () {
     return this.friends.length
 })
