@@ -45,7 +45,6 @@ This social network was created using node, express, js, mongodb, mongoose, and 
    - Express: `npm install express`
    - Mongoose: `npm install mongoose`
    - Nodemon: `npm install nodemon`
-   - Jest: `npm install jest`
 
 3. Ensure you have access to a MongoDB account and MongoDB Compass to interact with the database visually.
 
