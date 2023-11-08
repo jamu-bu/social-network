@@ -7,23 +7,15 @@
 ## Table of Contents
 
 - [Description](#description)
-- [Live Screen Recording of Application Functionality](#live-screen-recording-of-application-functionality)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Credits](#credits)
-- [Features](#features)
-- [Usage Information](#usage-information)
-- [Suggested Future Development](#suggested-future-development)
-- [Contribution Guidelines](#contribution-guidelines)
-- [Test Instructions](#test-instructions)
 - [License](#license)
 - [Questions](#questions)
 
 ## Description
 
 This social network was created using node, express, js, mongodb, mongoose, and insomnia to test get, post, update, delete routes.
-
-## Live Screen Recording of Application Functionality
 
 ## Technologies Used
 
